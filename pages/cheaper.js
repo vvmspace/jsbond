@@ -52,6 +52,7 @@ class Cheaper extends Component {
                         <title>Облигации дешевле номинала</title>
                         <link rel="icon" href="/favicon.ico"/>
                     </Head>
+                    <h1>Облигации дешевле номинала</h1>
                     <BondsFilter onChange={this.filterUpdate} filter={this.state.filter} />
                     <BondsList bonds={filtered}/>
                 </div>
