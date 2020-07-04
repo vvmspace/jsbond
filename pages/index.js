@@ -42,7 +42,7 @@ Home.getInitialProps = async function() {
             .filter(bond => (bond.yieldToClient > 0))
         ;
 
-        console.log(bonds);
+        // console.log(bonds);
 
 
         return {
