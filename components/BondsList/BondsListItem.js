@@ -65,7 +65,8 @@ const BondsListItem = props => {
             <div onClick={() => window.open(`https://www.tinkoff.ru/invest/bonds/${ticker}/`)}
                  className={'tinkoff'}
                  style={{cursor: 'pointer'}}
-            ><img src={'/tinkoff.svg'} /></div>
+            >{(typeof window !== 'undefined') && (<a href={`https://www.tinkoff.ru/invest/bonds/${ticker}/`}><img src={'/tinkoff.svg'} /></a>)
+            || (<img src={'/tinkoff.svg'} />)}</div>
             <hr />
             <div className={'figi'}>Финансовый Глобальный Идентификатор инструмента: {figi}</div>
             <div className={'ticker'}>Тикер: {ticker}</div>
