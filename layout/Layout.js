@@ -1,5 +1,7 @@
 import React from 'react';
 import NavBar from "./NavBar/NavBar";
+import Tinkoff from "../components/Tinkoff/Tinkoff";
+
 const Layout = props => {
 
     const [state, setState] = React.useState({
@@ -75,6 +77,7 @@ const Layout = props => {
                     Powered by VVM
                 </a>
             </footer>
+            <Tinkoff />
         </div>
     )};
 

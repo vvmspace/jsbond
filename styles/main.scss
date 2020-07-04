@@ -49,6 +49,7 @@ body {
 
 body {
   padding-top: $navbar-height;
+  padding-bottom: $navbar-height;
 }
 
 .navbar {
@@ -64,6 +65,45 @@ body {
   font-weight: 500;
   z-index: 2;
   box-shadow: -1px -1px 3px black;
+  //color: white;
+}
+
+.tinkoff {
+  @include container();
+  cursor: pointer;
+  position: fixed;
+  width: 100%;
+  height: $navbar-height;
+  bottom: 0;
+  left: 0;
+  line-height: $navbar-height;
+  font-size: 1.5rem;
+  font-weight: 500;
+  z-index: 2;
+  box-shadow: 1px 1px 3px black;
+  padding-top: 7px;
+  background: white;
+  .img-wrapper {
+    float: left;
+    width: 40%;
+    @media (min-width: $screen-sm-max + 1) {
+      //font-size: 20px;
+      //line-height: 22px;
+      width: 20%;
+    }
+  }
+  .text-wrapper {
+    float: left;
+    width: 60%;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: right;
+    @media (min-width: $screen-sm-max + 1) {
+      font-size: 20px;
+      line-height: 30px;
+      width: 80%;
+    }
+  }
   //color: white;
 }
 
