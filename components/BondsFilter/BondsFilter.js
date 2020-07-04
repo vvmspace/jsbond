@@ -22,7 +22,7 @@ class BondsFilter extends Component {
             <h3>Фильтр</h3>
             <div><input name={'cheaper'} checked={this.props.filter.cheaper} type={'checkbox'} onChange={this.filterToggle}/> Дешевле номинала</div>
             <div><input name={'cheaper3'} checked={this.props.filter.cheaper3} type={'checkbox'} onChange={this.filterToggle}/> Дешевле 1.03 номинала</div>
-            <div><input name={'monthly'} checked={this.props.filter.monthly} type={'checkbox'} onChange={this.filterToggle}/> Выплате в течении месяца</div>
+            <div><input name={'monthly'} checked={this.props.filter.monthly} type={'checkbox'} onChange={this.filterToggle}/> Выплата в течении месяца</div>
             {/*<h3>Сортировка</h3>*/}
         </div>
 
