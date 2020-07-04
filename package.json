@@ -1,0 +1,20 @@
+{
+  "name": "jsbond",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:docker": "next build",
+    "start:docker": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-accessible-accordion": "^3.2.0",
+    "react-dom": "16.13.1",
+    "sass": "^1.26.9"
+  }
+}

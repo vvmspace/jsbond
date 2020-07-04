@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+  jsbond_front:
+    build: .
+    container_name: jsbond_front
+    restart: always
+    ports:
+      - 3666:3000
