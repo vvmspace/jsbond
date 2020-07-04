@@ -64,8 +64,6 @@ class Cheaper extends Component {
 
 Cheaper.getInitialProps = async function () {
 
-    console.log('GIP');
-
     try {
         const res = await axios.get('https://api.jsbond.ru/bonds');
         const bonds = res.data;

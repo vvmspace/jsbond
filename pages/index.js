@@ -77,8 +77,6 @@ class Home extends Component {
 
 Home.getInitialProps = async function() {
 
-    console.log('GIP');
-
     try {
         const res = await axios.get('https://api.jsbond.ru/bonds');
         const bonds = res.data.filter(bond => bond.endDate < new Date().getTime() + 1 * 30 * 24 * 3600 * 1000)
