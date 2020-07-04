@@ -11,6 +11,12 @@ const Home = props => {
                     <title>JS Bond</title>
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
+                {/*<div className="grid">*/}
+                    <a href="https://nextjs.org/docs" className="card">
+                        <h3>Documentation &rarr;</h3>
+                        <p>Find in-depth information about Next.js features and API.</p>
+                    </a>
+                {/*</div>*/}
                 <BondsList bonds={props.bonds} />
       {/*          <style jsx>{`*/}
       {/*  .container {*/}

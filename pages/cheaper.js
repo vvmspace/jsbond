@@ -1,50 +1,68 @@
+import React, {Component} from 'react';
 import Layout from "../layout/Layout";
 import BondsList from "../components/BondsList/BondsList";
 import Head from "next/head";
 import axios from 'axios';
+import BondsFilter from "../components/BondsFilter/BondsFilter";
 
-const Home = props => {
-    return (
-        <Layout>
-            <div className="container">
-                <Head>
-                    <title>Облигации дешевле номинала</title>
-                    <link rel="icon" href="/favicon.ico"/>
-                </Head>
-                <BondsList bonds={props.bonds} />
-                {/*          <style jsx>{`*/}
-                {/*  .container {*/}
-                {/*    min-height: 100vh;*/}
-                {/*    padding: 0 0.5rem;*/}
-                {/*    display: flex;*/}
-                {/*    flex-direction: column;*/}
-                {/*    justify-content: center;*/}
-                {/*    align-items: center;*/}
-                {/*  }*/}
+class Cheaper extends Component {
 
-                {/*`}</style>*/}
-            </div>
-        </Layout>
-    )
+    state = {
+        filter: {
+            cheaper: true,
+            cheaper3: false,
+        },
+    };
+
+    filterUpdate = filter => {
+        this.setState({filter});
+    }
+
+    filter = () => {
+        let bonds = this.props.bonds;
+        if (this.state.filter.cheaper) {
+            bonds = bonds.filter(bond => bond.lastPrice < bond.faceValue)
+        }
+
+        if (this.state.filter.cheaper3) {
+            bonds = bonds.filter(bond => bond.lastPrice < 1.03 * bond.faceValue)
+        }
+
+        bonds.sort((a, b) => 2 * (a.couponPeriodDays > b.couponPeriodDays ? 1 : a.couponPeriodDays < b.couponPeriodDays ? -1 : 0)
+            + (a.endDate > b.endDate ? 1 : a.endDate < b.endDate ? -1 : 0))
+            .filter(bond => (bond.dateToClient > new Date().getTime()))
+            .filter(bond => (bond.yieldToClient > 0));
+
+        return bonds;
+    }
+
+    render() {
+
+        const filtered = this.filter();
+
+        return (
+            <Layout>
+                <div className="container">
+                    <Head>
+                        <title>Облигации дешевле номинала</title>
+                        <link rel="icon" href="/favicon.ico"/>
+                    </Head>
+                    <BondsFilter onChange={this.filterUpdate} filter={this.state.filter} />
+                    <BondsList bonds={filtered}/>
+                </div>
+            </Layout>
+        )
+    }
 }
 
 
-Home.getInitialProps = async function() {
+Cheaper.getInitialProps = async function () {
 
     console.log('GIP');
 
     try {
         const res = await axios.get('https://api.jsbond.ru/bonds');
-        const bonds = res.data
-            .filter(bond => bond.lastPrice < bond.faceValue)
-            // .filter(bond => bond.endDate < new Date().getTime() + 1 * 30 * 24 * 3600 * 1000)
-            // .filter(bond => bond.dateToClient < new Date().getTime() + 5 * 30 * 24 * 3600 * 1000)
-            // .sort((a,b) => a.yieldToClient < b.yieldToClient)
-            .sort((a,b) => 2 * (a.couponPeriodDays > b.couponPeriodDays ? 1 : a.couponPeriodDays < b.couponPeriodDays ? -1 : 0)
-                + (a.endDate > b.endDate ? 1 : a.endDate < b.endDate ? -1 : 0))
-            .filter(bond => (bond.dateToClient > new Date().getTime()))
-            .filter(bond => (bond.yieldToClient > 0))
-        ;
+        const bonds = res.data;
 
         // console.log(bonds);
 
@@ -53,9 +71,9 @@ Home.getInitialProps = async function() {
             bonds
         };
     } catch (e) {
-        return { errorCode: 502 };
+        return {errorCode: 502};
     }
 
 };
 
-export default Home;
+export default Cheaper;
