@@ -15,11 +15,19 @@ import {
 
 const readableDate = time => {
     const _date = new Date(time);
-    const dd = _date.getDay();
-    const mm = _date.getMonth();
-    const yyyy = _date.getFullYear();
+
+    let dd = _date.getDate();
+    let mm = _date.getMonth() + 1;
+
+    let yyyy = _date.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
     return `${dd}.${mm}.${yyyy}`;
-    // const mm
 }
 
 const daysLeft = time => Math.floor((
