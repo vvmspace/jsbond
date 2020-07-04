@@ -62,10 +62,14 @@ const BondsListItem = props => {
             </AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel>
-            <div onClick={() => window.open(`https://www.tinkoff.ru/invest/bonds/${ticker}/`)}
+            <div
                  className={'tinkoff'}
                  style={{cursor: 'pointer'}}
-            >{(typeof window !== 'undefined') && (<a href={`https://www.tinkoff.ru/invest/bonds/${ticker}/`}><img src={'/tinkoff.svg'} /></a>)
+            >{(typeof window !== 'undefined') && (<a style={{
+                display: 'block',
+                width: '100%',
+            }} href={`https://www.tinkoff.ru/invest/bonds/${ticker}/`} target={'_blank'}
+            ><img src={'/tinkoff.svg'} /></a>)
             || (<img src={'/tinkoff.svg'} />)}</div>
             <hr />
             <div className={'figi'}>Финансовый Глобальный Идентификатор инструмента: {figi}</div>
