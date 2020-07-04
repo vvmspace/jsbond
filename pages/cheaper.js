@@ -30,7 +30,7 @@ class Cheaper extends Component {
         }
 
         if (this.state.filter.monthly) {
-            bonds = bonds.filter(bond => bond.endDate < new Date().getTime() + 1 * 30 * 24 * 3600 * 1000);
+            bonds = bonds.filter(bond => bond.endDate < new Date().getTime() + 31 * 24 * 3600 * 1000);
         }
 
         bonds.sort((a, b) => 2 * (a.couponPeriodDays > b.couponPeriodDays ? 1 : a.couponPeriodDays < b.couponPeriodDays ? -1 : 0)
