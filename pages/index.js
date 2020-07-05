@@ -40,7 +40,7 @@ class Home extends Component {
             .filter(bond => (bond.dateToClient > new Date().getTime()))
             .filter(bond => (bond.yieldToClient > 0));
 
-        if (bonds.find(bond => bond[this.state.filter.sortBy])) {
+        if (this.state.filter.sortBy && bonds.find(bond => bond[this.state.filter.sortBy])) {
             bonds = bonds.sort((a,b) => a[this.state.filter.sortBy] > b[this.state.filter.sortBy]);
         }
         if (this.state.filter.sortBy === 'lotPrice') {
