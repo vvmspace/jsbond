@@ -240,7 +240,7 @@ code {
 .card:hover,
 .card:focus,
 .card:active, {
-  color: #0070f3;
+  //color: #0070f3;
   border-color: #0070f3;
 }
 
@@ -289,6 +289,16 @@ code {
       transform: rotate(45deg);
       //margin-top: 0;
     }
+  }
+}
+
+.bonds-list-item {
+  border-radius: 10px;
+  border: 1px solid black;
+  overflow: hidden;
+  margin: 7px 0;
+  &.open {
+    border-color: #0070f3;
   }
 }
 

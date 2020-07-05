@@ -70,7 +70,7 @@ class BondsListItem extends Component {
 
         const yieldy = (daysLeft(dateToClient) < 365) && Math.floor(10000 * ((faceValue * (100 + yieldToClient) / 100) - lastPrice) / lastPrice) /100;
 
-        return <div className={'bonds-list-item'}>
+        return <div className={'bonds-list-item' + (open && ' open' || '')}>
             <div className={'bonds-list-item-head' + (open && ' open' || '')} style={{color: (lastPrice < faceValue) && 'green'
                     || (lastPrice < faceValue * 1.03) && 'black'
                     || '#999'}}
