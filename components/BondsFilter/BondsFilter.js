@@ -34,6 +34,7 @@ class BondsFilter extends Component {
             <h3>Сортировка</h3>
             <div>
                 <select name={'sortBy'} value={this.props.filter.sortBy} onChange={this.filterSelect}>
+                    <option disabled selected>Выберите критерий</option>
                     <option value={'kprice'}>Цена / номинал</option>
                     <option value={'lotPrice'}>Цена лота</option>
                     <option value={'couponPeriodDays'}>Периодичность выплаты купона</option>
