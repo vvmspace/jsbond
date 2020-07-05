@@ -12,6 +12,7 @@ class Cheaper extends Component {
             cheaper: true,
             cheaper3: false,
             monthly: false,
+            sortBy: null,
         },
     };
 

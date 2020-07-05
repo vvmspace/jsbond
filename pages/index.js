@@ -40,6 +40,12 @@ class Home extends Component {
             .filter(bond => (bond.dateToClient > new Date().getTime()))
             .filter(bond => (bond.yieldToClient > 0));
 
+        if (this.state.filter.sortBy === 'lastPrice') {
+            bonds = bonds.sort((a,b) => b.lastPrice < a.lastPrice);
+        }
+        if (this.state.filter.sortBy === 'kprice') {
+            bonds = bonds.sort((a,b) => (b.lastPrice / b.faceValue) < (a.lastPrice / a.faceValue));
+        }
         return bonds;
     }
 

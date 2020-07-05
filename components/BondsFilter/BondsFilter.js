@@ -17,13 +17,27 @@ class BondsFilter extends Component {
         this.updateFilters();
     }
 
+    filterSelect = e => {
+        const {target} = e;
+        const {name, value} = target;
+        this.filters[name] = value;
+        console.log(value);
+        this.updateFilters();
+    }
+
     render() {
         return <div className="block">
             <h3>Фильтр</h3>
             <div><input name={'cheaper'} checked={this.props.filter.cheaper} type={'checkbox'} onChange={this.filterToggle}/> <a title={'Облигации дешевле номинала'} href={'/cheaper'}>Дешевле номинала</a></div>
             <div><input name={'cheaper3'} checked={this.props.filter.cheaper3} type={'checkbox'} onChange={this.filterToggle}/> Дешевле 1.03 номинала</div>
             <div><input name={'monthly'} checked={this.props.filter.monthly} type={'checkbox'} onChange={this.filterToggle}/> Выплата в течении месяца</div>
-            {/*<h3>Сортировка</h3>*/}
+            <h3>Сортировка</h3>
+            <div>
+                <select name={'sortBy'} value={this.props.filter.sortBy} onChange={this.filterSelect}>
+                    <option value={'kprice'}>Цена / номинал</option>
+                    <option value={'lastPrice'}>Текущая стоимость</option>
+                </select>
+            </div>
         </div>
 
     }
