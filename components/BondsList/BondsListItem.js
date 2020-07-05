@@ -78,6 +78,7 @@ const BondsListItem = props => {
             <hr />
             <div className={'face-value'}>Номинальная стоимость: {props.bond.faceValue}</div>
             <div className={'last-price'}>Текущая стоимость: {props.bond.lastPrice}</div>
+            <div className={'last-price'}>Лот: {props.bond.lot}</div>
             <div className={'last-price'}>Текущая доходность (totalYield): {totalYield} %</div>
             <div className={'last-price'}>Доходность к погашению (yieldToClient): {yieldToClient} %</div>
             {(daysLeft(dateToClient) < 365) && (<div>Доходность с вычетом разницы стоимости: {yieldy}%

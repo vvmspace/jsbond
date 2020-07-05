@@ -41,7 +41,7 @@ class Home extends Component {
             .filter(bond => (bond.yieldToClient > 0));
 
         if (this.state.filter.sortBy === 'lastPrice') {
-            bonds = bonds.sort((a,b) => b.lastPrice < a.lastPrice);
+            bonds = bonds.sort((a,b) => b.lastPrice * b.lot < a.lastPrice * a.lot);
         }
         if (this.state.filter.sortBy === 'kprice') {
             bonds = bonds.sort((a,b) => (b.lastPrice / b.faceValue) < (a.lastPrice / a.faceValue));

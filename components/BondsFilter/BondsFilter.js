@@ -35,7 +35,7 @@ class BondsFilter extends Component {
             <div>
                 <select name={'sortBy'} value={this.props.filter.sortBy} onChange={this.filterSelect}>
                     <option value={'kprice'}>Цена / номинал</option>
-                    <option value={'lastPrice'}>Текущая стоимость</option>
+                    <option value={'lastPrice'}>Цена лота</option>
                 </select>
             </div>
         </div>
