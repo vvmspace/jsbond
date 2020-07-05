@@ -11,6 +11,22 @@ $screen-sm-max: 600px;
 }
 
 .bonds-list-item {
+  .bonds-list-item-details {
+    position: relative;
+  }
+  .bonds-list-item-head {
+    font-weight: bold;
+    .dop {
+      font-weight: normal;
+      color: #999;
+      @media (max-width: $screen-sm-max) {
+        display: inline-block;
+        padding-top: 7px;
+        padding-bottom: 1px;
+        font-size: 12px;
+      }
+    }
+  }
   .accordion__panel {
     position: relative;
   }
@@ -247,5 +263,44 @@ code {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+.bonds-list-item-head {
+  background-color: #f4f4f4;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  &:before {
+    display: inline-block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-right: 12px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  &.open {
+    &:before {
+      transform: rotate(45deg);
+      //margin-top: 0;
+    }
+  }
+}
+
+.bonds-list-item-details, .bonds-list-item-head {
+  //padding: 10px 20px;
+}
+
+.bonds-list-item-details {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+  display: none;
+  &.open {
+    display: block;
   }
 }

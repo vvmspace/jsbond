@@ -12,6 +12,7 @@ class Home extends Component {
             cheaper: false,
             cheaper3: true,
             monthly: true,
+            sortBy: 'endDate',
         },
     };
 
@@ -37,17 +38,17 @@ class Home extends Component {
             .sort((a,b) => a.yieldToClient < b.yieldToClient)
             // .sort((a, b) => 2 * (a.couponPeriodDays > b.couponPeriodDays ? 1 : a.couponPeriodDays < b.couponPeriodDays ? -1 : 0)
             // + (a.endDate > b.endDate ? 1 : a.endDate < b.endDate ? -1 : 0))
-            .filter(bond => (bond.dateToClient > new Date().getTime()))
+            .filter(bond => (bond.endDate > new Date().getTime()))
             .filter(bond => (bond.yieldToClient > 0));
 
         if (this.state.filter.sortBy && bonds.find(bond => bond[this.state.filter.sortBy])) {
-            bonds = bonds.sort((a,b) => a[this.state.filter.sortBy] > b[this.state.filter.sortBy]);
+            bonds = bonds.sort((a,b) => (a[this.state.filter.sortBy] > b[this.state.filter.sortBy]) && 1 || -1);
         }
-        if (this.state.filter.sortBy === 'lotPrice') {
-            bonds = bonds.sort((a,b) => b.lastPrice * b.lot < a.lastPrice * a.lot);
+        if (this.state.filter.sortBy === 'lastPrice') {
+            bonds = bonds.sort((a,b) => (b.lastPrice * b.lot < a.lastPrice * a.lot) && 1 || -1);
         }
         if (this.state.filter.sortBy === 'kprice') {
-            bonds = bonds.sort((a,b) => (b.lastPrice / b.faceValue) < (a.lastPrice / a.faceValue));
+            bonds = bonds.sort((a,b) => a.faceValue && b.faceValue && ((b.lastPrice / b.faceValue) < (a.lastPrice / a.faceValue)) && 1 || -1);
         }
         return bonds;
     }
