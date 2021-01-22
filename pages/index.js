@@ -97,6 +97,7 @@ Home.getInitialProps = async function() {
             // .filter(bond => bond.dateToClient < new Date().getTime() + 5 * 30 * 24 * 3600 * 1000)
             .sort((a,b) => a.yieldToClient < b.yieldToClient)
             .filter(bond => (bond.dateToClient > new Date().getTime()))
+            .filter(bond => (bond.endDate > new Date().getTime()))
             .filter(bond => (bond.yieldToClient > 0))
         ;
 

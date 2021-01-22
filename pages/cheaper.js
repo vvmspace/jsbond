@@ -72,13 +72,14 @@ Cheaper.getInitialProps = async function () {
 
     try {
         const res = await axios.get('https://api.jsbond.ru/bonds');
-        const bonds = res.data;
+        const bonds = res.data || [];
 
         // console.log(bonds);
 
 
         return {
-            bonds
+            bonds: bonds.filter(bond => (bond.endDate > new Date().getTime()))
+
         };
     } catch (e) {
         return {errorCode: 502};
