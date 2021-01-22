@@ -44,7 +44,7 @@ class Cheaper extends Component {
             .filter(bond => (daysLeft(bond.endDate) > 0))
             .filter(bond => (bond.yieldToClient > 0));
 
-        return bonds;
+        return bonds.filter(bond => (daysLeft(bond.endDate) > 0));
     }
 
     render() {

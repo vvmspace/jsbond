@@ -5,6 +5,10 @@ import Head from "next/head";
 import axios from 'axios';
 import React, { Component } from 'react';
 
+const daysLeft = time => Math.floor((
+    time - new Date().getTime()
+) / (24*3600*1000));
+
 class Home extends Component {
 
     state = {
@@ -50,7 +54,7 @@ class Home extends Component {
         if (this.state.filter.sortBy === 'kprice') {
             bonds = bonds.sort((a,b) => a.faceValue && b.faceValue && ((b.lastPrice / b.faceValue) < (a.lastPrice / a.faceValue)) && 1 || -1);
         }
-        return bonds;
+        return bonds.filter(bond => (daysLeft(bond.endDate) > 0));
     }
 
     render() {
