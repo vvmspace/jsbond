@@ -78,7 +78,7 @@ Cheaper.getInitialProps = async function () {
 
 
         return {
-            bonds: bonds.filter(bond => (bond.endDate > new Date().getTime()))
+            bonds: bonds.filter(bond => (new Date(bond.endDate) > new Date()))
 
         };
     } catch (e) {
