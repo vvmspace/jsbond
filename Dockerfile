@@ -6,6 +6,7 @@ ENV NODE_ICU_DATA=/icu/node_modules/full-icu
 
 WORKDIR /app/src
 COPY package.json ./
+#somestring
 RUN npm install
 COPY . .
 
