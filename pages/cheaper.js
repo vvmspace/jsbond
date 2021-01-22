@@ -5,6 +5,10 @@ import Head from "next/head";
 import axios from 'axios';
 import BondsFilter from "../components/BondsFilter/BondsFilter";
 
+const daysLeft = time => Math.floor((
+    time - new Date().getTime()
+) / (24*3600*1000));
+
 class Cheaper extends Component {
 
     state = {
@@ -37,6 +41,7 @@ class Cheaper extends Component {
         bonds.sort((a, b) => 2 * (a.couponPeriodDays > b.couponPeriodDays ? 1 : a.couponPeriodDays < b.couponPeriodDays ? -1 : 0)
             + (a.endDate > b.endDate ? 1 : a.endDate < b.endDate ? -1 : 0))
             .filter(bond => (bond.dateToClient > new Date().getTime()))
+            .filter(bond => (daysLeft(bond.endDate) > 0))
             .filter(bond => (bond.yieldToClient > 0));
 
         return bonds;
